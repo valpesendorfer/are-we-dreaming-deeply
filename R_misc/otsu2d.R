@@ -32,9 +32,25 @@ otsu2d <- function(image){
   #-------------------------------------------------------------------------------------
   ## Processing
   
+  gvals <- getValues(image)
+  
+  gvals_nei <- getValuesFocal(image,ngb = c(3,3))
+  
+  gvals_nei <- cleanPad(gvals_nei,image)
+  
+  gvals_nei <- rowMeans(gvals_nei[,-5],na.rm = T)
+  
+  
+  df <- data.frame(gvals,gvals_nei) %>%
+        group_by(gvals,gvals_nei) %>%
+        tally() %>%
+        mutate(prob = n/ncell(test))
   
   
   
+  #-------------------------------------------------------------------------------------
+  ### UNDER CONSTRUCTION ###
+  #-------------------------------------------------------------------------------------
   
   
 }
