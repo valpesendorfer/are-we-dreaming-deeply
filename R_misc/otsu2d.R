@@ -52,5 +52,12 @@ otsu2d <- function(image){
   ### UNDER CONSTRUCTION ###
   #-------------------------------------------------------------------------------------
   
+  #TEMPCODE
+  
+  #df2[sample(1:nrow(df2),1),] # test random thresholds
+  
+  #mutate(df2,group = ifelse(ivals < 153 & t < 169.5,"C0","C1")) %>% group_by(group) %>% summarise_each(funs(mean,sum))
+  
+  
   
 }
