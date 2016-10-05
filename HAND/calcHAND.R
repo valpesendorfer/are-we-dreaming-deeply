@@ -19,29 +19,45 @@ calcHAND <- function(dem,fdir,facc,thresh){
   
   # DEM
   
-  if (missing(dem)){ stop('Please specify valid path to DEM!\n')
+  if (missing(dem)){ stop('Please specify valid (path to) DEM!\n')
     
-    } else if (!file.exists(dem)){stop('Please specify valid path to DEM!\n')
+  } else if (class(dem) != 'RasterLayer') {
+    
+    if(class(dem) == 'character'){
       
-    } else { dem <- raster(dem) }
-  
+      if(file.exists(dem)){dem <- raster(dem)} else {stop('\n Please specify valid path to DEM!\n')}
+      
+    } else {stop('\n Please specify either valid path to DEM or RasterLayer in memory!\n')}
+    
+  }
   
   # D8 Flowdirection
   
-  if (missing(fdir)){ stop('\n Please specify valid path to FDIR!\n')
+  if (missing(fdir)){ stop('Please specify valid (path to) FDIR!\n')
     
-  } else if (!file.exists(fdir)){stop('\n Please specify valid path to FDIR!\n')
+  } else if (class(fdir) != 'RasterLayer') {
     
-  } else { fdir <- raster(fdir) }
-  
+    if(class(fdir) == 'character'){
+      
+      if(file.exists(fdir)){fdir <- raster(fdir)} else {stop('\n Please specify valid path to FDIR!\n')}
+      
+    } else {stop('\n Please specify either valid path to FDIR or RasterLayer in memory!\n')}
+    
+  }
   
   # D8 Flowaccumulation
   
-  if (missing(facc)){ stop('\n Please specify valid path to FACC!\n')
+  if (missing(facc)){ stop('Please specify valid (path to) FACC!\n')
     
-  } else if (!file.exists(facc)){stop('\n Please specify valid path to FACC!\n')
+  } else if (class(facc) != 'RasterLayer') {
     
-  } else { facc <- raster(facc) }
+    if(class(facc) == 'character'){
+      
+      if(file.exists(facc)){facc <- raster(facc)} else {stop('\n Please specify valid path to FACC!\n')}
+      
+    } else {stop('\n Please specify either valid path to FACC or RasterLayer in memory!\n')}
+    
+  }
   
   # Stream-threshold 
   
