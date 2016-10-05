@@ -132,8 +132,9 @@ calcHAND <- function(dem,fdir,facc,thresh){
   streamIX <- dnet != 0
   smax <- sum(dnet[streamIX])
   
-  dnet[streamIX] <- 1:smax
-  rm(bool)
+  dnet[streamIX] <- seq_len(smax)
+  
+  if (exists('bool')){rm(bool)}
   
   #----------------------------------------------------------
   
