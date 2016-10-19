@@ -95,6 +95,13 @@ calcHAND <- function(dem,fdir,facc,thresh){
   #----------------------------------------------------------
   ## Processing
   
+  # NoData management
+  
+  dem[dem == -9999] <- NA
+  dem[dem < 0 ] <- 0
+  
+  fdir[fdir == 0 | fdir > 128] <- NA
+  
   
   # Calculate stream network from flow accumulation
   
