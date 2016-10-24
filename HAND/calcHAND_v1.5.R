@@ -1,5 +1,5 @@
 
-calcHAND <- function(dem,fdir,facc,thresh){
+calcHAND <- function(dem,fdir,facc,thresh,filename = NULL){
   
   #----------------------------------------------------------
   ## Load packages
@@ -205,9 +205,14 @@ calcHAND <- function(dem,fdir,facc,thresh){
   
   cat(' done. \n')
   
+  
+  if (!is.null(filename)){
+    writeRaster(hand, filename=filename, datatype="FLT4S", overwrite=TRUE)
+  }
+  
+  
   plot(hand)
   
   return(hand)
-  
   
 }
