@@ -1,5 +1,5 @@
 gdalMoS <- function(path=getwd(),pattern=NULL,recursive=TRUE,filename=NULL,
-                    stack=FALSE,datatype=NULL,nodata=NULL,toTiff=TRUE,verbose=FALSE,dryrun=FALSE){
+                    stck=FALSE,dtype=NULL,nodata=NULL,toTiff=TRUE,verbose=FALSE,dryrun=FALSE){
   
   # Wrapper function which takes multiple input raster and either mosaics or stacks them (if bands)
   # Requires OSGeo4W gdal - datatype strings according to gdal (e.g. UInt16)
@@ -31,11 +31,11 @@ gdalMoS <- function(path=getwd(),pattern=NULL,recursive=TRUE,filename=NULL,
   
   if(is.null(pattern)){stop('Please specify a pattern using REGEXP \n!')}
   
-  if(stack){stack <- '-separate '}else{stack <- NULL}
+  if(stck){stck <- '-separate '}else{stck <- NULL}
   
   if(!is.null(nodata)){nodata <- paste0('-srcnodata ',nodata,' ')} 
   
-  if(!is.null(datatype)){datatype <- paste0('-ot ',datatype, ' ')} 
+  if(!is.null(dtype)){dtype <- paste0('-ot ',dtype, ' ')} 
   
   
   #------------------------------------------------------------------------------------------------------------
@@ -44,9 +44,9 @@ gdalMoS <- function(path=getwd(),pattern=NULL,recursive=TRUE,filename=NULL,
   
   if(verbose || dryrun){cat('Input files: ',fls,'\n')}
   
-  fname <- ifelse(is.null(filename),paste0('/',pattern,'.vrt '),paste0('/',filename,'.vrt '))
+  fname <- ifelse(is.null(filename),paste0(path,'/',pattern,'.vrt '),paste0(path,'/',filename,'.vrt '))
   
-  cmd1 <- paste0(gdal,'gdalbuildvrt ',stack,nodata,path,fname,paste0(fls,collapse = ' '))
+  cmd1 <- paste0(gdal,'gdalbuildvrt ',stck,nodata,fname,paste0(fls,collapse = ' '))
   
   cat('Writing ',fname,'\n')
   
@@ -57,7 +57,7 @@ gdalMoS <- function(path=getwd(),pattern=NULL,recursive=TRUE,filename=NULL,
   
   if(toTiff){
     
-    cmd2 <- paste0(gdal,'gdal_translate ',datatype,fname,' ',gsub('.vrt','.tif',fname))
+    cmd2 <- paste0(gdal,'gdal_translate ',dtype,fname,' ',gsub('.vrt','.tif',fname))
     
     if(verbose || dryrun){print(cmd2)}
     
