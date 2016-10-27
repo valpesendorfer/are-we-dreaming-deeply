@@ -97,6 +97,7 @@ calcFACC <- function(fdir, filename = NULL){
   cell_nei  <- cleanPad(x = cell_nei, r = cell_id)
   
   fdir_to   <- values(fdir)
+  fdir_to[fdir_to == 0 | fdir_to > 128]  <- NA
   fdir_to   <- multiReclass(fdir_to, 
                             from = c(32, 64, 128, 16, 1, 8, 4, 2),
                             to   = seq_len(9)[-5])
