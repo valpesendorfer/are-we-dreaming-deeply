@@ -18,14 +18,20 @@
 
 - Miscellaneous R scripts: 
 
-	+ otsu2d: Imagethresholding for grayscale images using 2-dimensional Otsu method
+	+ calcThresh.R:
+	
+		Automatic thresholding function for greyscale images
 	
 		Based on:  
 		
-		N. Otsu, “A threshold selection method from graylevel histograms,” Systems, Man and Cybernetics, IEEE Transactions on, vol. 9, no. 1, pp. 62–66, 1979.
+			Kittler, J. and Illingworth, J. 1986. Minimum Error Thresholding. Pattern Recognition 19 (1): 41-47
 
-		P. Sthitpattanapongsa and T. Srinark, "A two-stage Otsu'S thresholding based method on a 2D histogram," Intelligent Computer Communication and Processing (ICCP), 2011 IEEE International Conference on, Cluj-Napoca, 2011,
-		pp. 345-348. doi: 10.1109/ICCP.2011.6047894
+			Twele, A., Cao, W., Plank, S., Martinis, S. 2016. Sentinel-1-based flood mapping: a fully automated processing chain.
+			International journal of remote sensing 37 (13: 2990-3004)
+		
+		
+		Note: This modified Kittler & Illingworth method was adapted in favour of the 2-d Otsu method which had 
+			  unsatisfying initial results.
 
 
 
