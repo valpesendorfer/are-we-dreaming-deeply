@@ -24,14 +24,15 @@
 	
 		Based on:  
 		
-			Kittler, J. and Illingworth, J. 1986. Minimum Error Thresholding. Pattern Recognition 19 (1): 41-47
+		Kittler, J. and Illingworth, J. 1986. Minimum Error Thresholding. Pattern Recognition 19 (1): 41-47
 
-			Twele, A., Cao, W., Plank, S., Martinis, S. 2016. Sentinel-1-based flood mapping: a fully automated processing chain.
-			International journal of remote sensing 37 (13: 2990-3004)
+		Twele, A., Cao, W., Plank, S., Martinis, S. 2016. Sentinel-1-based flood mapping: a fully automated processing chain.
+		International journal of remote sensing 37 (13: 2990-3004)
 		
 		
 		Note: This modified Kittler & Illingworth method was adapted in favour of the 2-d Otsu method which had 
 			  unsatisfying initial results.
+
 
 
 
