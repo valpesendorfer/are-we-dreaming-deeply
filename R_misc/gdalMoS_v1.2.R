@@ -40,7 +40,7 @@ gdalMoS <- function(path=getwd(),pattern=NULL,recursive=TRUE,filename=NULL,
   
   #------------------------------------------------------------------------------------------------------------
   
-  fls <- list.files(path,pattern,full.names = T,recursive)
+  fls <- list.files(path,pattern,full.names = T,recursive = recursive)
   
   if(verbose || dryrun){cat('Input files: ',fls,'\n')}
   
