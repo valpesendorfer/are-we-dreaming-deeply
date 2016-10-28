@@ -20,6 +20,19 @@ calcThresh <- function(x,hand=NULL,filename=NULL){
 # by Valentin Pesendorfer, 2016
 #---------------------------------------------------------------------------------------------------------------------------------------
 
+# Libraries
+  
+libs <- c("raster","dplyr")
+new_p <- setdiff(libs, rownames(installed.packages())) 
+if (length(new_p) != 0 ) install.packages(new_p) 
+  
+dmp <- lapply(libs, require, character.only = TRUE)
+  
+  
+if(!any(unlist(dmp))) warning('Problem occured while loading packages!')
+rm(dmp)
+  
+  
 # Helper functions
 
 ielse <- function(cond,ieT,ieF){if(cond) return(ieT) else return(ieF)}
