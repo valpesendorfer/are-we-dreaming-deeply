@@ -9,15 +9,15 @@ var ImgScale = function(image){
   var percentiles = image.reduceRegion({
 
     reducer: ee.Reducer.percentile([1,99]),
-    geometry: image.geomety(),
+    geometry: image.geometry(),
     scale: image.projection().nominalScale(),
     maxPixels:1e12
   }).values();
 
-  im1 = ee.Image.constant(percentiles.get(0));
-  im99 = ee.Image.constant(percentiles.get(1));
+  var im1 = ee.Image.constant(percentiles.get(0));
+  var im99 = ee.Image.constant(percentiles.get(1));
 
-  return image.addBands(image.select(bands).subtract(im1).multiply(255).divide(im99.subtract(im1)).round(),null,true);
+  return image.addBands(image.select(bands).subtract(im1).multiply(255).divide(im99.subtract(im1)).round().uint8(),null,true);
 
 
 }
