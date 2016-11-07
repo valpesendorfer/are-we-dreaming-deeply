@@ -9,7 +9,7 @@ rmex <- function(...){
   
   vars <- ls(envir = env)
   
-  rm(list = vars[!is.element(vars, unlist(argv))],envir = env)
+  rm(list = vars[!is.element(vars, c(unlist(argv)),'rmex')],envir = env)
   
   invisible(gc())
   
