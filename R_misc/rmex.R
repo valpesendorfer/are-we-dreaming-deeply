@@ -11,4 +11,6 @@ rmex <- function(...){
   
   rm(list = vars[!is.element(vars, unlist(argv))],envir = env)
   
+  invisible(gc())
+  
 }
